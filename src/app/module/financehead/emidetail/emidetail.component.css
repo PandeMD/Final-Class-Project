@@ -1,0 +1,29 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  .example-container mat-form-field {
+    margin-left: 40px;
+  }
+
+  .next {
+    margin-left: 70px; 
+    /* background-color:#1C82AD; */
+    background-color:#332FD0;
+    border: none;
+    text-decoration-color: white;
+  }
+
+  .container {
+
+    /* margin-top: 30px; */
+    margin-left: 250px!important;
+    position: relative;
+     /* margin-right: 20px; */
+} 
+
+  /* #03C988#1C82AD#00337C#13005A */

@@ -1,0 +1,561 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="registrationForm">
+        <mat-stepper orientation="vertical" #stepper>
+          <mat-step [stepControl]="registrationForm">
+            <ng-template matStepLabel>Applicant Information</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name as per PAN</mat-label>
+                <input matInput placeholder="Ex. Yash" formControlName="firstName" required>
+                <mat-error *ngIf="registrationForm.controls['firstName'].touched &&
+                registrationForm.controls['firstName'].invalid">
+                  <span *ngIf="registrationForm.controls['firstName'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name as per PAN</mat-label>
+                <input matInput placeholder="Ex. Raghuwanshi" formControlName="lastName">
+                <mat-error *ngIf="registrationForm.controls['lastName'].touched &&
+                registrationForm.controls['lastName'].invalid">
+                  <span *ngIf="registrationForm.controls['lastName'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Ex. 12/12/1995" formControlName="dateOfBirth">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker color="primary"></mat-datepicker>
+                <mat-error *ngIf="registrationForm.controls['dateOfBirth'].touched &&
+                registrationForm.controls['dateOfBirth'].invalid">
+                  <span *ngIf="registrationForm.controls['dateOfBirth'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Gender</mat-label>
+                <!-- <input matInput placeholder="Gender" formControlName="firstCtrl" required> -->
+                <mat-select formControlName="gender">
+                  <mat-option value="Male">Male</mat-option>
+                  <mat-option value="Female">Female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['gender'].touched &&
+                registrationForm.controls['gender'].invalid">
+                  <span *ngIf="registrationForm.controls['gender'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Maritial Status</mat-label>
+                <!-- <input matInput placeholder="Maritial Status" formControlName="firstCtrl" required> -->
+                <mat-select formControlName="maritialStatus">
+                  <mat-option value="Married">Married</mat-option>
+                  <mat-option value="Unmarried">Unmarried</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['maritialStatus'].touched &&
+                registrationForm.controls['maritialStatus'].invalid">
+                  <span *ngIf="registrationForm.controls['maritialStatus'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field hintLabel="Max 100 characters" appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput #input maxlength="100" placeholder="Ex. Raghuvir Sankul, Gawali Pura, Akot"
+                  formControlName="address">
+                <mat-hint align="end">{{input.value.length}}/100</mat-hint>
+                <mat-error *ngIf="registrationForm.controls['address'].touched &&
+                registrationForm.controls['address'].invalid">
+                  <span *ngIf="registrationForm.controls['address'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Mobile</mat-label>
+                <input matInput placeholder="Ex. 97XXXXXXXX" formControlName="mobileNumber">
+                <span matTextPrefix>+91&nbsp;</span>
+                <mat-error *ngIf="registrationForm.controls['mobileNumber'].touched &&
+                registrationForm.controls['mobileNumber'].invalid">
+                  <span *ngIf="registrationForm.controls['mobileNumber'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Ex. mailings.yash@gmail.com" formControlName="emailAddress">
+                <mat-error *ngIf="registrationForm.controls['emailAddress'].touched &&
+                registrationForm.controls['emailAddress'].invalid">
+                  <span *ngIf="registrationForm.controls['emailAddress'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>PAN No</mat-label>
+                <input matInput placeholder="Ex. BVGPR4821Q" formControlName="panNumber">
+                <mat-error *ngIf="registrationForm.controls['panNumber'].touched &&
+                registrationForm.controls['panNumber'].invalid">
+                  <span *ngIf="registrationForm.controls['panNumber'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Aadhaar</mat-label>
+                <input matInput placeholder="Ex. 7976785375888" formControlName="aadhaarNumber">
+                <mat-error *ngIf="registrationForm.controls['aadhaarNumber'].touched &&
+                registrationForm.controls['aadhaarNumber'].invalid">
+                  <span *ngIf="registrationForm.controls['aadhaarNumber'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Loan Amount</mat-label>
+                <input matInput placeholder="Ex. Rs 10,00000" formControlName="loanAmount">
+                <mat-error *ngIf="registrationForm.controls['loanAmount'].touched &&
+                registrationForm.controls['loanAmount'].invalid">
+                  <span *ngIf="registrationForm.controls['loanAmount'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Business Turnover</mat-label>
+                <!-- <input matInput placeholder="Business Turnover" formControlName="businessTurnover"> -->
+                <mat-select formControlName="businessTurnover">
+                  <mat-option value="Upto 5 Lacs">Upto 5 Lacs</mat-option>
+                  <mat-option value="10 Lacs - 25 Lacs">10 Lacs - 25 Lacs</mat-option>
+                  <mat-option value="25 Lacs - 50 Lacs">25 Lacs - 50 Lacs</mat-option>
+                  <mat-option value="50 Lacs - 75 Lacs">50 Lacs - 75 Lacs</mat-option>
+                  <mat-option value="75 Lacs - 1 Cr">75 Lacs - 1 Cr</mat-option>
+                  <mat-option value="1 Cr+">1 Cr+</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['businessTurnover'].touched &&
+                registrationForm.controls['businessTurnover'].invalid">
+                  <span *ngIf="registrationForm.controls['businessTurnover'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Monthly Sales</mat-label>
+                <input matInput placeholder="Monthly Sales" formControlName="monthlySales">
+                <mat-error *ngIf="registrationForm.controls['monthlySales'].touched &&
+                registrationForm.controls['monthlySales'].invalid">
+                  <span *ngIf="registrationForm.controls['monthlySales'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="companyDetails" [stepControl]="registrationForm.get('companyDetails')">
+            <ng-template matStepLabel>Company details</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput formControlName="companyName" placeholder="Ex. ZYT Web solutions">
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('companyName').touched &&
+                registrationForm.controls['companyDetails'].get('companyName').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('companyName').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Type</mat-label>
+                <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. Company Type"
+                 required> -->
+                <mat-select formControlName="companyType">
+                  <mat-option value="Sole proprietorship">Sole proprietorship</mat-option>
+                  <mat-option value="Partnership">Partnership</mat-option>
+                  <mat-option value="Corporation">Corporation</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('companyType').touched &&
+                registrationForm.controls['companyDetails'].get('companyType').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('companyType').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Monthly Sales</mat-label>
+                <input matInput formControlName="monthlySales" placeholder="Ex. Monthly Sales">
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('monthlySales').touched &&
+                registrationForm.controls['companyDetails'].get('monthlySales').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('monthlySales').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Annual Sales</mat-label>
+                <input matInput formControlName="annualSales" placeholder="Ex. Annual Sales">
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('annualSales').touched &&
+                registrationForm.controls['companyDetails'].get('annualSales').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('annualSales').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Turnover</mat-label>
+                <input matInput formControlName="companyTurnover" placeholder="Ex. Company Turnover">
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('companyTurnover').touched &&
+                registrationForm.controls['companyDetails'].get('companyTurnover').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('companyTurnover').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Vintage</mat-label>
+                <input matInput formControlName="companyVintage" placeholder="Ex. 12 years">
+                <mat-error *ngIf="registrationForm.controls['companyDetails'].get('companyVintage').touched &&
+                registrationForm.controls['companyDetails'].get('companyVintage').invalid">
+                  <span *ngIf="registrationForm.controls['companyDetails'].get('companyVintage').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="bankDetails" [stepControl]="registrationForm.get('bankDetails')">
+            <ng-template matStepLabel>Bank details</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Bank Name</mat-label>
+                <input matInput formControlName="bankName" placeholder="Ex. State Bank of India">
+                <mat-error *ngIf="registrationForm.controls['bankDetails'].get('bankName').touched &&
+                registrationForm.controls['bankDetails'].get('bankName').invalid">
+                  <span *ngIf="registrationForm.controls['bankDetails'].get('bankName').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Account Number</mat-label>
+                <input matInput formControlName="accountNumber" placeholder="Ex. 33769590625">
+                <mat-error *ngIf="registrationForm.controls['bankDetails'].get('accountNumber').touched &&
+                registrationForm.controls['bankDetails'].get('accountNumber').invalid">
+                  <span *ngIf="registrationForm.controls['bankDetails'].get('accountNumber').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>IFSC Code</mat-label>
+                <input matInput formControlName="ifscCode" placeholder="Ex. SBIN0003296">
+                <mat-error *ngIf="registrationForm.controls['bankDetails'].get('ifscCode').touched &&
+                registrationForm.controls['bankDetails'].get('ifscCode').invalid">
+                  <span *ngIf="registrationForm.controls['bankDetails'].get('ifscCode').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="loanRequest" [stepControl]="registrationForm.get('loanRequest')">
+            <ng-template matStepLabel>Loan Details</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Desired loan amount</mat-label>
+                <input matInput formControlName="requestLoanAmount" placeholder="Ex. State Bank of India">
+                <mat-error *ngIf="registrationForm.controls['loanRequest'].get('requestLoanAmount').touched &&
+                registrationForm.controls['loanRequest'].get('requestLoanAmount').invalid">
+                  <span *ngIf="registrationForm.controls['loanRequest'].get('requestLoanAmount').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Loan Tenure</mat-label>
+                <!-- <input matInput formControlName="fourthCtrl" placeholder="Ex. 33769590625"
+                 required> -->
+                <mat-select formControlName="requestLoanTenure">
+                  <mat-option value=12>12</mat-option>
+                  <mat-option value=24>24</mat-option>
+                  <mat-option value=36>36</mat-option>
+                  <mat-option value=48>48</mat-option>
+                  <mat-option value=60>60</mat-option>
+                  <mat-option value=72>72</mat-option>
+                  <mat-option value=84>84</mat-option>
+                  <mat-option value=96>96</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['loanRequest'].get('requestLoanTenure').touched &&
+                registrationForm.controls['loanRequest'].get('requestLoanTenure').invalid">
+                  <span *ngIf="registrationForm.controls['loanRequest'].get('requestLoanTenure').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Loan EMI</mat-label>
+                <input matInput formControlName="requestLoanEmi" placeholder="Ex. 25,000">
+                <mat-error *ngIf="registrationForm.controls['loanRequest'].get('requestLoanEmi').touched &&
+                registrationForm.controls['loanRequest'].get('requestLoanEmi').invalid">
+                  <span *ngIf="registrationForm.controls['loanRequest'].get('requestLoanEmi').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Sanction Status</mat-label>
+                <mat-select formControlName="sanctionStatus">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['loanRequest'].get('sanctionStatus').touched &&
+                registrationForm.controls['loanRequest'].get('sanctionStatus').invalid">
+                  <span *ngIf="registrationForm.controls['loanRequest'].get('sanctionStatus').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Disbursal Status</mat-label>
+                <mat-select formControlName="disbursalStatus">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['loanRequest'].get('disbursalStatus').touched &&
+                registrationForm.controls['loanRequest'].get('disbursalStatus').invalid">
+                  <span *ngIf="registrationForm.controls['loanRequest'].get('disbursalStatus').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="previousLoan" [stepControl]="registrationForm.get('previousLoan')">
+            <ng-template matStepLabel>Previous Loan Details</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Previous Loan Amount</mat-label>
+                <input matInput formControlName="loanAmount" placeholder="Ex. State Bank of India">
+                <mat-error *ngIf="registrationForm.controls['previousLoan'].get('loanAmount').touched &&
+                registrationForm.controls['previousLoan'].get('loanAmount').invalid">
+                  <span *ngIf="registrationForm.controls['previousLoan'].get('loanAmount').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Loan Tenure</mat-label>
+                <!-- <input matInput formControlName="fourthCtrl" placeholder="Ex. 10"
+                 required> -->
+                <mat-select formControlName="loanTenure">
+                  <mat-option value=12>12</mat-option>
+                  <mat-option value=24>24</mat-option>
+                  <mat-option value=36>36</mat-option>
+                  <mat-option value=48>48</mat-option>
+                  <mat-option value=60>60</mat-option>
+                  <mat-option value=72>72</mat-option>
+                  <mat-option value=84>84</mat-option>
+                  <mat-option value=96>96</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['previousLoan'].get('loanTenure').touched &&
+                registrationForm.controls['previousLoan'].get('loanTenure').invalid">
+                  <span *ngIf="registrationForm.controls['previousLoan'].get('loanTenure').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>EMI Status</mat-label>
+                <!-- <input matInput formControlName="fourthCtrl" placeholder="Ex. Completed"
+                 required> -->
+                <mat-select formControlName="emiStatus">
+                  <mat-option value="Due">Due</mat-option>
+                  <mat-option value="Undue">Undue</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registrationForm.controls['previousLoan'].get('emiStatus').touched &&
+                registrationForm.controls['previousLoan'].get('emiStatus').invalid">
+                  <span *ngIf="registrationForm.controls['previousLoan'].get('emiStatus').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Paid Amount</mat-label>
+                <input matInput formControlName="paidAmount" placeholder="Ex. 300000">
+                <mat-error *ngIf="registrationForm.controls['previousLoan'].get('paidAmount').touched &&
+                registrationForm.controls['previousLoan'].get('paidAmount').invalid">
+                  <span *ngIf="registrationForm.controls['previousLoan'].get('paidAmount').hasError('required')" style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Remaining Amount</mat-label>
+                <input matInput formControlName="remainingAmount" placeholder="Ex. Remaining Amount">
+                <mat-error *ngIf="registrationForm.controls['previousLoan'].get('remainingAmount').touched &&
+                registrationForm.controls['previousLoan'].get('remainingAmount').invalid">
+                  <span *ngIf="registrationForm.controls['previousLoan'].get('remainingAmount').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+
+          </mat-step>
+          <mat-step formGroupName="guarantorDetails" [stepControl]="registrationForm.get('guarantorDetails')">
+            <ng-template matStepLabel>Guarantor Details</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label>Guarantor Name</mat-label>
+                <input matInput formControlName="guarantorName" placeholder="Ex. Aman Gupta">
+                <mat-error *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorName').touched &&
+                registrationForm.controls['guarantorDetails'].get('guarantorName').invalid">
+                  <span *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorName').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput formControlName="guarantorMobileNumber" placeholder="Ex. 97XXXXXXXX">
+                <span matTextPrefix>+91&nbsp;</span>
+                <mat-error *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorMobileNumber').touched &&
+                registrationForm.controls['guarantorDetails'].get('guarantorMobileNumber').invalid">
+                  <span *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorMobileNumber').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Relationship</mat-label>
+                <input matInput formControlName="guarantorRelation" placeholder="Ex. Brother">
+                <mat-error *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorRelation').touched &&
+                registrationForm.controls['guarantorDetails'].get('guarantorRelation').invalid">
+                  <span
+                    *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorRelation').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Designation</mat-label>
+                <input matInput formControlName="guarantorDesignation" placeholder="Ex. Manager">
+                <mat-error *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorDesignation').touched &&
+                registrationForm.controls['guarantorDetails'].get('guarantorDesignation').invalid">
+                  <span
+                    *ngIf="registrationForm.controls['guarantorDetails'].get('guarantorDesignation').hasError('required')"
+                    style="color:
+                    red">You must enter a value</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="documentUpload" [stepControl]="registrationForm.get('documentUpload')">
+            <ng-template matStepLabel>Upload Documents</ng-template>
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile1; else newFile1">{{selectedfile1.item(0).name}}</mat-label>
+                <ng-template #newFile1><mat-label>PAN Card</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput1.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile1($event)" #fileInput1 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile2; else newFile2">{{selectedfile2.item(0).name}}</mat-label>
+                <ng-template #newFile2><mat-label>Aadhaar Card</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput2.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile2($event)" #fileInput2 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile3; else newFile3">{{selectedfile3.item(0).name}}</mat-label>
+                <ng-template #newFile3><mat-label>Photo</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput3.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile3($event)" #fileInput3 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile4; else newFile4">{{selectedfile4.item(0).name}}</mat-label>
+                <ng-template #newFile4><mat-label>Bank Statement</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput4.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile4($event)" #fileInput4 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile5; else newFile5">{{selectedfile5.item(0).name}}</mat-label>
+                <ng-template #newFile5><mat-label>Registration Proof</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput5.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile5($event)" #fileInput5 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile6; else newFile6">{{selectedfile6.item(0).name}}</mat-label>
+                <ng-template #newFile6><mat-label>Address Proof</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput6.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile6($event)" #fileInput6 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile7; else newFile7">{{selectedfile7.item(0).name}}</mat-label>
+                <ng-template #newFile7><mat-label>Signature</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput7.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile7($event)" #fileInput7 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile8; else newFile8">{{selectedfile8.item(0).name}}</mat-label>
+                <ng-template #newFile8><mat-label>Blank Cheque</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput8.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile8($event)" #fileInput8 type="file">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label *ngIf="selectedfile9; else newFile9">{{selectedfile9.item(0).name}}</mat-label>
+                <ng-template #newFile9><mat-label>ITR Copy</mat-label></ng-template>
+                <input matInput disabled>
+                <button mat-icon-button matSuffix (click)="fileInput9.click()">
+                  <mat-icon>attach_file</mat-icon>
+                </button>
+                <input hidden (change)="onselectedFile9($event)" #fileInput9 type="file">
+              </mat-form-field>
+            </div>
+            <div class="button">
+              <button mat-button matStepperPrevious>Back</button>
+              <!-- <button mat-button (click)="resetFileUploader()">Reset</button> -->
+              <button mat-button (click)="stepper.reset();this.resetSelectedFiles()">Reset</button>
+              <button type="submit" (click)="onSubmit()" mat-button matStepperPrevious>Save</button>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

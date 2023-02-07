@@ -1,0 +1,66 @@
+.left-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.result {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+h5,
+h6 {
+    color: gray;
+    font-size: 16px;
+}
+
+.active {
+    background-color: #001846;
+}
+
+h1 {
+    font-size: 28px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 15px;
+        color: gray;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    h1 {
+        font-size: 35px;
+        margin-bottom: -20px;
+    }
+}
+
+.btn {
+    margin-right: 8px;
+}
+
+.container {
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    padding-left: 60px;
+}
+
+.mat-mdc-card {
+
+    margin-top: 30px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+
+}
+
+.custom-slider .ng5-slider .ng5-slider-pointer{
+
+background-color: #001846 !important;
+
+}
+  

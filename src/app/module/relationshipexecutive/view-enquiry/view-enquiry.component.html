@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="title"><span>Enquiry List</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive table-hover">
+                    <table class="table" id="my-table">
+                        <thead>
+                            <tr>
+                                <th>Enquiry Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Date of Birth</th>
+                                <th>Mobile No.</th>
+                                <th>Email Id</th>
+                                <th>PAN No.</th>
+                                <th>CIBIL Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let e of enquiryList | paginate : {itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                                <td>{{e.enquiryId}}</td>
+                                <td>{{e.firstName}}</td>
+                                <td>{{e.lastName}}</td>
+                                <td>{{e.dateOfBirth}}</td>
+                                <td>{{e.mobileNumber}}</td>
+                                <td>{{e.emailAddress}}</td>
+                                <td>{{e.panNumber}}</td>
+                                <td>{{e.cibilscore.cibilStatus || 'Pending'}}</td>
+                               <td><button class="btn btn-primary" [disabled]="!isEligible(e.cibilscore.cibilStatus)" (click)="register()">Register</button></td>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="d-flex justify-content-between align-items-center inline">
+                        <pagination-controls class="my-pagination" (pageChange)="page = $event">
+                        </pagination-controls>
+                        <a (click)="getBack()" class="linkable"><i class="fa fa-arrow-circle-left"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

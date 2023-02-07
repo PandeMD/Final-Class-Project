@@ -1,0 +1,132 @@
+<!-- <p>emidetail works!</p> -->
+
+<!-- <form (ngSubmit)="CallBack()" [formGroup]="emiForm">
+  
+    <div *ngIf="detail===1">
+    Emi Status:<input type="text" placeholder="Enter Emi Status" formControlName="emiStatus" name="estatus"><br><br>
+    Emi Amount:<input type="text" placeholder="Enter Emi Amount" formControlName="emiAmount" name="eamount"><br><br>
+    Emi Tenure:<input type="text" placeholder="Enter Emi Tenure" formControlName="emiTenure" name="etenure"><br><br>
+    Emi Paid:<input type="text" placeholder="Enter Emi Paid" formControlName="emiPaid" name="epaid"><br><br>
+    Defaulter Count:<input type="text" placeholder="Enter Dafaulter Count" formControlName="defaulterCount" name="dcount"><br><br>
+        </div>
+        <div *ngIf="detail===2">
+     <div formGroupName="loanSanction" >
+        Sanction Loan Amount:<input type="text" placeholder="Enter Loan Amount" formControlName="sanctionLoanAmount" name="lamount"><br><br>
+        Sanction Loan Tenure:<input type="text" placeholder="Enter Loan Tenure" formControlName="sanctionLoanTenure" name="ltenure"><br><br>
+        Sanction Loan Emi:<input type="text" placeholder="Enter Loan Emi" formControlName="sanctionLoanEmi" name="lemi"><br><br>
+    </div>
+    <div formGroupName="loanSanction" >
+        Sanction Loan Amount:<input type="text" placeholder="Enter Loan Amount" formControlName="sanctionLoanAmount" name="lamount"><br><br>
+        Sanction Loan Tenure:<input type="text" placeholder="Enter Loan Tenure" formControlName="sanctionLoanTenure" name="ltenure"><br><br>
+        Sanction Loan Emi:<input type="text" placeholder="Enter Loan Emi" formControlName="sanctionLoanEmi" name="lemi"><br><br>
+    </div>
+    </div>
+    <input type="button" value="Next" (click)="next()" *ngIf="detail<2">
+    <input type="button" value="Previous" (click)="previous()" *ngIf="detail>1">
+    <input type="submit" value="SAVE" *ngIf="detail===2">
+
+</form> -->
+
+  <div class="container">
+  <mat-stepper  #stepper >
+    <!-- <mat-step [stepControl]="emiForm"> -->
+      <form [formGroup]="emiForm1" >
+        <mat-step>
+        <ng-template matStepLabel>Fill out your Details</ng-template>
+        <div class="example-container" >
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Emi Pre Status</mat-label>
+                <mat-select formControlName="emiPreStatus">
+                  <mat-option value="Pending">Pending</mat-option>
+                  <mat-option value="Not Mention">Not Mention</mat-option>
+                </mat-select>
+              </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Emi Total Amount</mat-label>
+            <input matInput placeholder="Amount" formControlName="emiTotalAmount" required>
+          </mat-form-field>
+          </p>
+          <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Emi Tenure</mat-label>
+            <input matInput placeholder="Years" formControlName="emiTenure" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Emi ROI</mat-label>
+            <input matInput placeholder="Rate" formControlName="emiRoi" required>
+          </mat-form-field>
+        </p> 
+
+           <!-- <mat-form-field appearance="fill">
+            <mat-label>Emi ROI</mat-label>
+            <mat-select formControlName="emiRoi">
+              <mat-option value="Paid">Paid</mat-option>
+              <mat-option value="Not Paid">Not Paid</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+       
+<!--
+        <mat-form-field appearance="fill">
+            <mat-label>Defaulter Count</mat-label>
+            <mat-select formControlName="defaulterCount">
+              <mat-option value=0>Zero</mat-option>
+              <mat-option value=1>One</mat-option>
+              <mat-option value=2>Two</mat-option>
+              <mat-option value=3>Three</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </p> -->
+        
+        <div>
+          <button  class="next"  mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+      <!-- </form> -->
+      </mat-step>
+
+        <mat-step   >
+          <!-- <form [formGroup]="loanSanction" > -->
+            <div formGroupName="ls" >
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <div class="example-container">
+        <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Sanction Loan Amount</mat-label>
+          <input matInput formControlName="sanctionLoanAmount" placeholder="Sanction Loan Amount" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Sanction Loan Tenure</mat-label>
+            <input matInput formControlName="sanctionLoanTenure" placeholder="Sanction Loan Tenure" required>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Sanction Loan Emi</mat-label>
+            <input matInput formControlName="sanctionLoanEmi" placeholder="Sanction Loan Emi" required>
+          </mat-form-field>
+        </p>
+        <div>
+          <button  class="next" mat-button matStepperPrevious>Back</button>
+          <button  class="next" mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+      <!-- </form> -->
+      </div>
+     </mat-step>
+
+      <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="example-container">
+      <p>You are now done.</p>
+      <div>
+        <button class="next" mat-button (click)="stepper.reset()">Reset</button>
+        <button class="next" mat-button type="submit" (click)="CallBack()">Save</button>
+      </div>
+      </div>
+    </mat-step>
+  </form>
+     </mat-stepper>
+</div>
+    

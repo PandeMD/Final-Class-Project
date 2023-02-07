@@ -1,0 +1,36 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.example-container mat-form-field {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 230px;
+}
+
+.mat-mdc-button {
+
+  background-color: #3f51b5;
+  color: #ffffff !important;
+  margin-left: 10px;
+
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 50%;
+  margin-left: 480px;
+}
+
+.container .button {
+  margin-left: 120px;
+}
+
+.mat-mdc-card {
+  border-radius: 10px;
+}

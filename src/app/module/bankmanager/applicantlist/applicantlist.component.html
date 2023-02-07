@@ -1,0 +1,64 @@
+<p>applicantlist works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-sm-3 col-xs-12">
+                            <h4 class="title">Applicant <span>List</span></h4>
+                        </div>
+                        <div class="col-sm-9 col-xs-12 text-right">
+                            <div class="btn_group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button  class="btn btn-default mx-2 mb-1" title="Pdf"><i
+                                        class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-default mb-1" title="Excel"><i
+                                        class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Account No</th>
+                                <th>Email Id</th>
+                                <!-- <th>Sanction Amount</th> -->
+                                <th>Status</th>
+                                <th style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let c of customerList | paginate : {itemsPerPage: 5, currentPage: page, totalItems: totalRecords} ">
+                                <td scope="row">{{c.customerId}}</td>
+                                <td>{{c.firstName}}</td>
+                                <td>{{c.bankDetails.accountNumber}}</td>
+                                <td>{{c.emailAddress}}</td>
+                                <!-- <td >{{e.ls.sanctionLoanAmount}}</td>-->
+                                <td>{{c.loanRequest.sanctionStatus}}</td> 
+                                <td>
+                                    <button type="submit" class="btn btn-primary" (click)="Disburse()">Disburstment</button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="d-flex justify-content-between align-items-center inline">
+                        <pagination-controls class="my-pagination" (pageChange)="page = $event">
+                        </pagination-controls>
+                        <a (click)="getBack()" class="linkable">
+                            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    </div>
+        </div>
+    </div>
+</div>

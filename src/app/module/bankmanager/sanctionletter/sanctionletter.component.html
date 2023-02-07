@@ -1,0 +1,130 @@
+<p>sanctionletter works!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-sm-3 col-xs-12">
+                            <h4 class="title">Loan Sanction <span>List</span></h4>
+                        </div>
+                        <div class="col-sm-9 col-xs-12 text-right">
+                            <div class="btn_group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button  class="btn btn-default mx-2 mb-1" title="Pdf"><i
+                                        class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-default mb-1" title="Excel"><i
+                                        class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <!-- <th>Name</th>
+                                <th>Account No</th> -->
+                                <th>Emi Total Amount</th>
+                                <th>Emi Tenure</th>
+                                <th>Emi Roi</th>
+                                <th>Data Converter</th>
+                                <th style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                        <!-- *ngFor="let c of customerList | paginate : {itemsPerPage: 5, currentPage: page, totalItems: totalRecords}"> -->
+                            <tr *ngFor="let emil of EmiList | paginate : {id: 'pagination1' ,itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                                <td scope="row">{{emil.emiId}}</td>
+                                <!-- <td>{{c.firstName}}</td>
+                                <td>{{c.bankDetails.accountNumber}}</td> -->
+                                <td>{{emil.emiTotalAmount}}</td>
+                                <td>{{emil.emiTenure}}</td>
+                                <td>{{emil.emiRoi}}</td>
+                                <td>
+                                  <button type="submit" class="btn btn-primary" (click)="Pdf(emil.emiId)"> PDF</button>
+                                  <button type="submit" class="btn btn-primary" (click)="Excel(emil.emiId)"> Excel</button>
+                                  </td>
+                                  <td>
+                                    <!-- <button type="submit" class="btn btn-primary">View Emi</button> -->
+
+
+<button class="btn btn-primary" (click)="open(mymodal)"> View Emi</button>
+
+<ng-template #mymodal let-modal class="modal-xl">
+  <div class="popup">
+  <div class="modal-header modal-xl">
+    <h4 class="modal-title" id="modal-basic-title">Emi List</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+</div>
+  <!-- <div>
+  <button class="btn btn-primary" (click)="Popup(emil.emiId)">Emi</button>
+  </div> -->
+  <div class="modal-body">
+      <div>
+        <table class="table table-responsive table-bordered">
+<thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col" style="width: 3px !important;">Emi Amount</th>
+    <th scope="col">Emi Status</th>
+    <th scope="col">Emi Paid</th>
+    <th scope="col">Emi UnPaid</th>
+    <!-- <th scope="col">Def Count</th> -->
+  </tr>
+</thead>
+<tbody>
+  <tr 
+  *ngFor="let em of ManyEmi | paginate : {id:'pagination2' ,itemsPerPage: 6, currentPage: page1, totalItems: totalRecords}">
+    <th scope="row">{{em.emiDetailId}}</th>
+    <td style="width: 3px !important;">{{em.emiAmount}}</td>
+    <td>{{em.emiStatus}}</td>
+    <td><button type="submit" class="btn btn-primary" (click)="StatusChange(em)">Paid</button><br></td>
+    <td><button type="submit" class="btn btn-primary" (click)="StatusUnpaidChange(em)">UnPaid</button></td>
+    <!-- <td><button type="submit" class="btn btn-primary" (click)="!StatusChange(emi.emiStatus)">Paid</button></td> -->
+    <!-- <td><button type="submit" class="btn btn-primary" (click)="Defaulter(emil.emiId,emil.emiPreStatus)">DL</button></td> -->
+  </tr>
+
+</table>
+<!-- </div> -->
+<div class="panel-footer">
+  <div class="d-flex justify-content-between align-items-center inline">
+      <pagination-controls id="pagination2" class="my-pagination" (pageChange)="page1 = $event">
+      </pagination-controls>
+      <a (click)="getBack()" class="linkable">
+          <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+      </a>
+  </div>
+  </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+<!-- </div> -->
+</ng-template>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="d-flex justify-content-between align-items-center inline">
+                        <pagination-controls id="pagination1" class="my-pagination" (pageChange)="page = $event">
+                        </pagination-controls>
+                        <a (click)="getBack()" class="linkable">
+                            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<p>adminlist works!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-sm-3 col-xs-12">
+                            <h4 class="title">Employee <span>List</span></h4>
+                        </div>
+                        <div class="col-sm-9 col-xs-12 text-right">
+                            <div class="btn_group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button class="btn btn-default" title="Reload"><i class="fa fa-sync-alt"></i></button>
+                                <button class="btn btn-default" title="Pdf"><i class="fa fa-file-pdf"></i></button>
+                                <button class="btn btn-default" title="Excel"><i class="fas fa-file-excel"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button class="btn btn-outline-dark" (click)="open(mymodal)">Add Employee</button>
+   
+                <ng-template #mymodal let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div>
+                        <form [formGroup]="EmpForm">
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="inputEmail4">First Name</label>
+                                <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputPassword4">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name">
+                              </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputAddress">Password</label>
+                              <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="inputAddress2">Role</label>
+                              <input type="text" class="form-control" id="role" formControlName="role" placeholder="OE,RE,BM...">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress2">Email Id</label>
+                                <input type="email" class="form-control" id="emailId" formControlName="emailId" placeholder="abc@gamil.com">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputAddress2">Date Of Birth</label>
+                                <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" placeholder="Date of Birth in (dd/mm/yyyy)">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputState" >Gender</label>
+                                <select id="inputState" formControlName="gender" class="form-control">
+                                  <option selected>Choose...</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                  <option>Other</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputAddress2">Profile Photo</label>
+                                <input type="file" class="form-control" id="profilePhoto" (change)="onSelectFile1($event)">
+                              </div>
+                          </form>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" (click)="saveEmp()">Save changes</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+                
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Password</th>
+                                <th>Role</th>
+                                <th>Email Id</th>
+                                <th>Date Of Birth</th>
+                                <th>Gender</th>
+                                <th>Photo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let e of EmpList | paginate : {itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+                                <td scope="row">{{e.adminId}}</td>
+                                <td>{{e.firstName}}</td>
+                                <td>{{e.lastName}}</td>
+                                <td>{{e.password}}</td>
+                                <td>{{e.emailId}}</td>
+                                <td>{{e.role}}</td>
+                                <td>{{e.dateOfBirth}}</td>
+                                <td>{{e.gender}}</td>
+                                <td>
+                                    <img [src]="'data:image/jpeg;base64,'+e.profilePhoto" height="50" width="50">
+                                </td>
+                                <!-- <td>
+                                    <ul class="action-list">
+                                        <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
+                                        <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="d-flex justify-content-between align-items-center inline">
+                        <pagination-controls class="my-pagination" (pageChange)="page = $event">
+                        </pagination-controls>
+                        <a (click)="getBack()" class="linkable">
+                            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    </div>
+        </div>
+    </div>
+</div>

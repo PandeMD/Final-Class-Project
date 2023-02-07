@@ -1,0 +1,81 @@
+<div class="example-container">
+    <mat-card>
+        <div class="form">
+            <h1>Enquiry Form</h1>
+        </div>
+        <form [formGroup]="enquiryForm">
+            <div class="example-form-fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" placeholder="First Name as per PAN" required>
+                    <mat-error *ngIf="enquiryForm.controls['firstName'].touched &&
+                    enquiryForm.controls['firstName'].invalid">
+                        <span *ngIf="enquiryForm.controls['firstName'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" placeholder="Last Name as per PAN" required>
+                    <mat-error *ngIf="enquiryForm.controls['firstName'].touched &&
+                    enquiryForm.controls['firstName'].invalid">
+                        <span *ngIf="enquiryForm.controls['firstName'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-form-fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Ex. 12/12/1995">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="primary"></mat-datepicker>
+                    <mat-error *ngIf="enquiryForm.controls['dateOfBirth'].touched &&
+                    enquiryForm.controls['dateOfBirth'].invalid">
+                        <span *ngIf="enquiryForm.controls['dateOfBirth'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput formControlName="mobileNumber" placeholder="Ex. 97XXXXXXXX">
+                    <span matTextPrefix>+91&nbsp;</span>
+                    <mat-error *ngIf="enquiryForm.controls['mobileNumber'].touched &&
+                    enquiryForm.controls['mobileNumber'].invalid">
+                        <span *ngIf="enquiryForm.controls['mobileNumber'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-form-fields">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="emailAddress" placeholder="Ex. mailings.yash@gmail.com">
+                    <mat-error *ngIf="enquiryForm.controls['emailAddress'].touched &&
+                    enquiryForm.controls['emailAddress'].invalid">
+                        <span *ngIf="enquiryForm.controls['emailAddress'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>PAN No</mat-label>
+                    <input matInput formControlName="panNumber" placeholder="Ex. BVGPR4821Q">
+                    <mat-error *ngIf="enquiryForm.controls['panNumber'].touched &&
+                    enquiryForm.controls['panNumber'].invalid">
+                        <span *ngIf="enquiryForm.controls['panNumber'].hasError('required')" style="color:
+                    red">You must enter a value</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- <div class="example-section">
+                <mat-checkbox class="example-margin" [disabled]="true">I agree to all statements in <a
+                        routerLink="#!"><u>Terms of Service</u></a></mat-checkbox>
+            </div> -->
+            <div class="button">
+                <button mat-button (click)="resetForm()">Reset</button>
+                <button type="submit" (click)="onSubmit()" mat-button>Save</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

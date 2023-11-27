@@ -65,7 +65,7 @@ export class LoandetailsComponent {
     // let textBody = '';
     let textBody = `Dear Customer,\n\n`; 
       subject = 'Document rejection for Request for Loan';
-      textBody += 'This letter is in reference to your loan application.\n\n It gives us the pain to describe to you that your request for the loan has been rejected by the board of directors of our finance company. After going through your application, it is found out that your documents are not proper or incomplete which could not met our criteria for sanctioning the loan. We are very sorry to inform you that your application was rejected due to above reason. Please visit our office for further details. Anyhow, we would always be obtainable to provide you with other matters.\n\n Hoping to serve you in a better way.'
+      textBody += 'This letter is in reference to your loan application.\n\n It gives us the pain to describe to you that your request for the loan has been rejected by the board of directors of our finance company. After going through your application, it is found out that your documents are not proper or incomplete which could not met our criteria for sanctioning the loan. We are very sorry to inform you that your application was rejected due to above reason. Please visit our office for further details. Anyhow, we would always be obtainable to provide you with other matters.\n\n Hoping to serve you in a better way.\n\nRegards\nCredify And Team'
 
     this.cs.sendMailFail(emailId, subject, textBody).subscribe(() => {
       console.log('Email sent successfully');

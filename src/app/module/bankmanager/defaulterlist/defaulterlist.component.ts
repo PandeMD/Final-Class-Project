@@ -89,7 +89,7 @@ export class DefaulterlistComponent {
     // let textBody = '';
     let textBody = `Dear Customer,\n\n`; 
       subject = 'Notice for non-repayment of loan EMIs';
-      textBody += 'This is to inform you that as you are not paying EMIs regularly for the loan amount sanctioned by our company. We hereby serving you the legal notice through email from our finance company. You are asked to reply and visit our company office at the earliest.\n\n Failing to do so will further lead to more legal actions by law.'
+      textBody += 'This is to inform you that as you are not paying EMIs regularly for the loan amount sanctioned by our company. We hereby serving you the legal notice through email from our finance company. You are asked to reply and visit our company office at the earliest.\n\n Failing to do so will further lead to more legal actions by law.\n\nRegards\nCredify And Team'
     
       this.cs.sendMailNotice(emailId, subject, textBody).subscribe(() => {
       console.log('Email sent successfully');

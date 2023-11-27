@@ -42,7 +42,7 @@ export class ApplicantlistComponent {
     // let textBody = '';
     let textBody = `Dear Customer,\n\n`; 
       subject = 'Loan amount disbursement confirmation.';
-      textBody += 'We are highly pleased to inform you that your application for a small business finance loan has been approved by our finance company. I hereby request you to please check your bank account for the credited loan amount from our finance company.\n\n For further details please visit our company office.'
+      textBody += 'We are highly pleased to inform you that your application for a small business finance loan has been approved by our finance company. I hereby request you to please check your bank account for the credited loan amount from our finance company.\n\n For further details please visit our company office.\n\nRegards\nCredify And Team'
     this.cs.sendMailDis(emailId, subject, textBody).subscribe(() => {
       console.log('Email sent successfully');
     });
